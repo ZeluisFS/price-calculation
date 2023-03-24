@@ -14,7 +14,7 @@ export class CalculationComponent {
     Validators.min(this.minimumPriceOrValueValidation)];
 
   formGroup = this.fb.group({
-    country: ['PT', [Validators.required]],
+    country: ['', [Validators.required]],
     vatRate: ['', [Validators.required]],
     priceOptions: ['', [Validators.required]],
     priceWithoutVat: ['', this.priceOrValueValidators],
@@ -32,6 +32,14 @@ export class CalculationComponent {
   priceOptions: string[] = ['Price without VAT', 'Value-Added Tax', 'Price incl. VAT'];
 
   constructor(private fb: FormBuilder) { }
+
+  alreadySelectedCountry(): boolean {
+    if (this.formGroup.get('country')?.value) {
+      return true;
+    }
+
+    return false;
+  }
 
   selectedCountryVatRates(): number[] {
     const selectedCountryCode = this.formGroup.get('country')?.value;
