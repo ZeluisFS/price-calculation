@@ -50,4 +50,12 @@ export class CalculationComponent {
 
     return [];
   }
+
+  alreadySelectedVatRate(): boolean {
+    if (this.formGroup.get('vatRate')?.value) {
+      return true;
+    }
+
+    return false;
+  }
 }
