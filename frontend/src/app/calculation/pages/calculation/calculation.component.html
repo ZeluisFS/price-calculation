@@ -39,13 +39,13 @@
         </div>
         <div class="col-6 d-flex flex-column price-calculation">
           <mat-form-field>
-            <input matInput formControlName="priceWithoutVat">
+            <input matInput formControlName="priceWithoutVat" (change)="onPriceChange($event, 'priceWithoutVat')">
           </mat-form-field>
           <mat-form-field>
-            <input matInput formControlName="valueAddedTax">
+            <input matInput formControlName="valueAddedTax" (change)="onPriceChange($event, 'valueAddedTax')">
           </mat-form-field>
           <mat-form-field>
-            <input matInput formControlName="priceIncludeVat">
+            <input matInput formControlName="priceIncludeVat" (change)="onPriceChange($event, 'priceIncludeVat')">
           </mat-form-field>
         </div>
       </div>
