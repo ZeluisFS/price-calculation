@@ -31,9 +31,9 @@
 
       <div *ngIf="alreadySelectedVatRate()" class="row">
         <div class="col-6 price-calculation">
-          <mat-radio-group formControlName="priceOptions" class="d-flex flex-column">
-            <mat-radio-button [value]="option" *ngFor="let option of priceOptions" class="d-flex align-items-center">
-              {{option}}
+          <mat-radio-group formControlName="priceOptions" (change)="onPriceOptionChange($event)" class="d-flex flex-column">
+            <mat-radio-button [value]="option.code" *ngFor="let option of priceOptions"class="d-flex align-items-center">
+              {{option.value}}
             </mat-radio-button>
           </mat-radio-group>
         </div>

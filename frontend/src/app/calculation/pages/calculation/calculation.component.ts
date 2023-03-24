@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatRadioChange } from '@angular/material/radio';
 import { ONLY_NUMERIC_REGEX } from 'src/app/utils';
-import { CountryWithVatRates } from '../../models';
+import { CountryWithVatRates, PriceOptions } from '../../models';
 
 @Component({
   selector: 'app-calculation',
@@ -17,9 +18,9 @@ export class CalculationComponent {
     country: ['', [Validators.required]],
     vatRate: ['', [Validators.required]],
     priceOptions: ['', [Validators.required]],
-    priceWithoutVat: ['', this.priceOrValueValidators],
-    valueAddedTax: ['', this.priceOrValueValidators],
-    priceIncludeVat: ['', this.priceOrValueValidators]
+    priceWithoutVat: [{value: '', disabled: true}, this.priceOrValueValidators],
+    valueAddedTax: [{value: '', disabled: true}, this.priceOrValueValidators],
+    priceIncludeVat: [{value: '', disabled: true}, this.priceOrValueValidators]
   });
 
   countries: CountryWithVatRates[] = [
@@ -29,7 +30,11 @@ export class CalculationComponent {
     {code: 'SG', value: 'Singapore', vatRates: [7]}
   ];
 
-  priceOptions: string[] = ['Price without VAT', 'Value-Added Tax', 'Price incl. VAT'];
+  priceOptions: PriceOptions[] = [
+    {code: 'priceWithoutVat', value: 'Price without VAT'},
+    {code: 'valueAddedTax', value: 'Value-Added Tax'},
+    {code: 'priceIncludeVat', value: 'Price incl. VAT'}
+  ];
 
   constructor(private fb: FormBuilder) { }
 
@@ -57,5 +62,29 @@ export class CalculationComponent {
     }
 
     return false;
+  }
+
+  onPriceOptionChange(event: MatRadioChange): void {
+    const newPriceOptionCode = event.value;
+
+    this.enableFormControl(newPriceOptionCode);
+    this.disableOtherPriceOptions(newPriceOptionCode);
+  }
+
+
+  private disableFormControl(controlName: string): void {
+    this.formGroup.get(controlName)?.disable();
+  }
+
+  private enableFormControl(controlName: string): void {
+    this.formGroup.get(controlName)?.enable();
+  }
+
+  private disableOtherPriceOptions(priceCode: string): void {
+    for (let option of this.priceOptions) {
+      if (option.code != priceCode) {
+        this.disableFormControl(option.code);
+      }
+    }
   }
 }
