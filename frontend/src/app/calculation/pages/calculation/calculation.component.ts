@@ -6,7 +6,7 @@ import { CountryWithVatRates } from '../../models';
 @Component({
   selector: 'app-calculation',
   templateUrl: './calculation.component.html',
-  styleUrls: ['./calculation.component.css']
+  styleUrls: ['./calculation.component.scss']
 })
 export class CalculationComponent {
   private minimumPriceOrValueValidation: number = 1;
@@ -14,7 +14,7 @@ export class CalculationComponent {
     Validators.min(this.minimumPriceOrValueValidation)];
 
   formGroup = this.fb.group({
-    country: ['', [Validators.required]],
+    country: ['PT', [Validators.required]],
     vatRate: ['', [Validators.required]],
     priceOptions: ['', [Validators.required]],
     priceWithoutVat: ['', this.priceOrValueValidators],

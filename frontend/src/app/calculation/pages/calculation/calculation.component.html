@@ -1,41 +1,50 @@
 <mat-card>
   <mat-card-content>
     <form [formGroup]="formGroup" novalidate>
-      <mat-form-field>
-        <mat-label>Country</mat-label>
-        <mat-select formControlName="country">
-          <mat-option [value]="country.code" *ngFor="let country of countries">{{country.value}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <!-- <mat-form-field>
-        <mat-label>VAT rate</mat-label>
-        <mat-radio-group formControlName="vatRate">
-          <mat-radio-button [value]="rate" *ngFor="let rate of selectedCountryVatRates()"></mat-radio-button>
-        </mat-radio-group>
-      </mat-form-field> -->
-      <mat-label>VAT rate</mat-label>
-      <mat-radio-group formControlName="vatRate">
-        <mat-radio-button [value]="rate" *ngFor="let rate of selectedCountryVatRates()"></mat-radio-button>
-      </mat-radio-group>
 
       <div class="row">
         <div class="col-6">
-          <mat-radio-group formControlName="priceOptions">
-            <mat-radio-button [value]="option" *ngFor="let option of priceOptions"></mat-radio-button>
-          </mat-radio-group>
+          <mat-label>Country</mat-label>
         </div>
         <div class="col-6">
+          <mat-form-field class="d-flex flex-row">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="country">
+              <mat-option [value]="country.code" *ngFor="let country of countries">{{country.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <mat-label>VAT rate</mat-label>
+        </div>
+        <div class="col-6">
+          <mat-radio-group formControlName="vatRate">
+            <mat-radio-button [value]="rate" *ngFor="let rate of selectedCountryVatRates()" class="me-3">
+              {{rate}}%
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 price-calculation">
+          <mat-radio-group formControlName="priceOptions" class="d-flex flex-column">
+            <mat-radio-button [value]="option" *ngFor="let option of priceOptions" class="d-flex align-items-center">
+              {{option}}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="col-6 d-flex flex-column price-calculation">
           <mat-form-field>
-            <mat-label></mat-label>
             <input matInput formControlName="priceWithoutVat">
           </mat-form-field>
           <mat-form-field>
-            <mat-label></mat-label>
             <input matInput formControlName="valueAddedTax">
           </mat-form-field>
           <mat-form-field>
-            <mat-label></mat-label>
             <input matInput formControlName="priceIncludeVat">
           </mat-form-field>
         </div>
