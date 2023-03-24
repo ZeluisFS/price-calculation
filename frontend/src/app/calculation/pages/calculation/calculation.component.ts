@@ -111,6 +111,19 @@ export class CalculationComponent {
     }
   }
 
+  controlHasError(formControlName: string): string {
+    const errors = this.formGroup.get(formControlName)?.errors as {required: boolean, pattern: object};
+
+    if (errors && errors.required) {
+      return 'Field cannot be empty';
+    }
+    else if (errors && errors.pattern) {
+      return 'Field only numeric'
+    }
+
+    return '';
+  }
+
   private disableFormControl(controlName: string): void {
     this.formGroup.get(controlName)?.disable();
   }

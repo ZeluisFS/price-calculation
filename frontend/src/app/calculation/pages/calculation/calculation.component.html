@@ -40,15 +40,25 @@
         <div class="col-6 d-flex flex-column price-calculation">
           <mat-form-field>
             <input matInput formControlName="priceWithoutVat" (change)="onPriceChange($event, 'priceWithoutVat')">
+            <mat-error *ngIf="controlHasError('priceWithoutVat')">
+              {{controlHasError('priceWithoutVat')}}
+            </mat-error>
           </mat-form-field>
           <mat-form-field>
             <input matInput formControlName="valueAddedTax" (change)="onPriceChange($event, 'valueAddedTax')">
+            <mat-error *ngIf="controlHasError('valueAddedTax')">
+              {{controlHasError('valueAddedTax')}}
+            </mat-error>
           </mat-form-field>
           <mat-form-field>
             <input matInput formControlName="priceIncludeVat" (change)="onPriceChange($event, 'priceIncludeVat')">
+            <mat-error *ngIf="controlHasError('priceIncludeVat')">
+              {{controlHasError('priceIncludeVat')}}
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
+      <button type="submit" [hidden]="true"></button>
     </form>
   </mat-card-content>
 </mat-card>
