@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCalculation", "PriceCalculation\PriceCalculation.csproj", "{7F11AA07-CB78-4414-8A14-F75BACF518A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCalculation.Business", "PriceCalculation.Business\PriceCalculation.Business.csproj", "{82133A00-8D25-40C1-8B55-3BFFCB642CAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F11AA07-CB78-4414-8A14-F75BACF518A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F11AA07-CB78-4414-8A14-F75BACF518A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F11AA07-CB78-4414-8A14-F75BACF518A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F11AA07-CB78-4414-8A14-F75BACF518A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82133A00-8D25-40C1-8B55-3BFFCB642CAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82133A00-8D25-40C1-8B55-3BFFCB642CAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82133A00-8D25-40C1-8B55-3BFFCB642CAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82133A00-8D25-40C1-8B55-3BFFCB642CAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F68F84C4-4A75-4974-85D5-23DD8091535D}
+	EndGlobalSection
+EndGlobal
