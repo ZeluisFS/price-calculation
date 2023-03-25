@@ -2,12 +2,12 @@
 {
     public class CountryDto
     {
-        public string Code { get; set; }
-        public string Value { get; set; }
+        public string? Code { get; set; }
+        public string? Value { get; set; }
     }
 
     public class CountryWithVatRatesDto : CountryDto
     {
-        public IReadOnlyCollection<int> VatRates { get; set; }
+        public IReadOnlyCollection<int>? VatRates { get; set; }
     }
 }
