@@ -108,13 +108,17 @@ export class CalculationFormComponent {
   }
 
   controlHasError(formControlName: string): string {
-    const errors = this.formGroup.get(formControlName)?.errors as {required: boolean, pattern: object};
+    const errors = this.formGroup.get(formControlName)?.errors as {required: boolean, pattern: object, min: Object};
+    console.log(errors);
 
     if (errors && errors.required) {
       return 'Field cannot be empty';
     }
     else if (errors && errors.pattern) {
       return 'Field only numeric'
+    }
+    else if (errors && errors.min) {
+      return 'Field must be positive';
     }
 
     return '';
