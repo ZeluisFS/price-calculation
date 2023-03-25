@@ -9,11 +9,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { CalculationRoutingModule } from './calculation-routing.module';
 import { CalculationComponent } from './pages/calculation/calculation.component';
+import { CalculationFormComponent } from './components/calculation-form/calculation-form.component';
 
 
 @NgModule({
   declarations: [
-    CalculationComponent
+    CalculationComponent,
+    CalculationFormComponent
   ],
   imports: [
     CommonModule,

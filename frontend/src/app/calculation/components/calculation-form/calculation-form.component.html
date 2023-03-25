@@ -1,0 +1,65 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="formGroup" novalidate>
+
+      <div class="row">
+        <div class="col-6">
+          <mat-label>Country</mat-label>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="d-flex flex-row">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="country">
+              <mat-option [value]="country.code" *ngFor="let country of countries">{{country.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div *ngIf="alreadySelectedCountry()" class="row">
+        <div class="col-6">
+          <mat-label>VAT rate</mat-label>
+        </div>
+        <div class="col-6">
+          <mat-radio-group formControlName="vatRate">
+            <mat-radio-button [value]="rate" *ngFor="let rate of selectedCountryVatRates()" class="me-3">
+              {{rate}}%
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <div *ngIf="alreadySelectedVatRate()" class="row">
+        <div class="col-6 price-calculation">
+          <mat-radio-group formControlName="priceOptions" (change)="onPriceOptionChange($event)" class="d-flex flex-column">
+            <mat-radio-button [value]="option.code" *ngFor="let option of priceOptions"class="d-flex align-items-center">
+              {{option.value}}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="col-6 d-flex flex-column price-calculation">
+          <mat-form-field>
+            <input matInput formControlName="priceWithoutVat" (change)="onPriceChange($event, 'priceWithoutVat')">
+            <mat-error *ngIf="controlHasError('priceWithoutVat')">
+              {{controlHasError('priceWithoutVat')}}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="valueAddedTax" (change)="onPriceChange($event, 'valueAddedTax')">
+            <mat-error *ngIf="controlHasError('valueAddedTax')">
+              {{controlHasError('valueAddedTax')}}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="priceIncludeVat" (change)="onPriceChange($event, 'priceIncludeVat')">
+            <mat-error *ngIf="controlHasError('priceIncludeVat')">
+              {{controlHasError('priceIncludeVat')}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <button type="submit" [hidden]="true"></button>
+    </form>
+
+  </mat-card-content>
+</mat-card>
